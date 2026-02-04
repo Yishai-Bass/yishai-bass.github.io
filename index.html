@@ -39,7 +39,7 @@
 
     .email-section {
       position: fixed;
-      bottom: 80px;
+      bottom: 60px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -48,37 +48,47 @@
     .email-section label {
       display: block;
       color: #fff;
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .email-section label.fade-out {
+      opacity: 0;
+      transform: translateY(-10px);
     }
 
     .email-section input[type="email"] {
       padding: 12px 20px;
       font-size: 16px;
       border: none;
-      border-radius: 5px;
-      width: 200px;
+      border-radius: 30px;
+      width: 300px;
       outline: none;
+      box-sizing: border-box;
     }
 
     .email-section button {
-      margin-top: 15px;
-      padding: 12px 30px;
+      margin-top: 20px;
+      padding: 12px 20px;
       font-size: 16px;
       background: #fcdc8b;
       color: #000;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px;
       cursor: pointer;
       font-family: 'Montserrat', Arial, sans-serif;
       font-weight: 700;
-      transition: transform 0.2s, box-shadow 0.2s;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: none;
+      box-sizing: border-box;
     }
 
     .email-section button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(252, 220, 139, 0.4);
+      box-shadow: 0 0 25px rgba(252, 220, 139, 0.8), 0 0 50px rgba(252, 220, 139, 0.4);
     }
 
     .hero-section {
@@ -87,6 +97,91 @@
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
+    }
+
+    .toggle-section {
+      position: fixed;
+      top: 280px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 30px;
+      padding: 4px;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: calc(50% - 4px);
+      height: calc(100% - 8px);
+      background: #fcdc8b;
+      border-radius: 26px;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+      z-index: 0;
+      box-shadow: none;
+    }
+
+    .toggle-slider.right {
+      transform: translateX(100%);
+    }
+
+    .toggle-slider.glowing {
+      box-shadow: 0 0 25px rgba(252, 220, 139, 0.8), 0 0 50px rgba(252, 220, 139, 0.4);
+    }
+
+    .toggle-section:hover .toggle-slider {
+      box-shadow: 0 0 25px rgba(252, 220, 139, 0.8), 0 0 50px rgba(252, 220, 139, 0.4);
+    }
+
+    .toggle-btn {
+      padding: 15px 40px;
+      font-size: 16px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      z-index: 1;
+      color: #000;
+    }
+
+    .toggle-btn:first-child {
+      border-radius: 30px 0 0 30px;
+    }
+
+    .toggle-btn:last-child {
+      border-radius: 0 30px 30px 0;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.02);
+    }
+
+    .toggle-btn:active {
+      transform: scale(0.98);
+    }
+
+    .toggle-btn.active {
+      font-weight: 700;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     .hero-title {
@@ -116,7 +211,7 @@
 
     .error-message {
       color: #f87171;
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       margin-top: 15px;
       display: none;
     }
@@ -124,11 +219,11 @@
     /* Mobile responsive styles */
     @media (max-width: 768px) {
       .hero-title {
-        font-size: 3.5rem;
+        font-size: 5rem;
       }
 
       .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.8rem;
       }
 
       .hero-section {
@@ -136,93 +231,172 @@
         width: 90%;
       }
 
+      .toggle-section {
+        top: 240px;
+      }
+
+      .toggle-btn {
+        padding: 12px 30px;
+        font-size: 14px;
+      }
+
       .corner-image {
-        width: 200px;
-        bottom: -100px;
-        left: -100px;
+        width: 300px;
+        bottom: -150px;
+        left: -150px;
       }
 
       .email-section {
-        bottom: 40px;
+        bottom: 50px;
+      }
+
+      .email-section label {
+        font-size: 15px;
       }
 
       .email-section input[type="email"] {
-        width: 180px;
-        padding: 10px 15px;
-        font-size: 14px;
+        width: 260px;
+        padding: 12px 18px;
+        font-size: 15px;
       }
 
       .email-section button {
-        padding: 10px 20px;
-        font-size: 14px;
+        width: 260px;
+        padding: 12px 20px;
+        font-size: 15px;
       }
     }
 
     @media (max-width: 480px) {
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
       }
 
       .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.4rem;
+      }
+
+      .toggle-section {
+        top: 200px;
+      }
+
+      .toggle-btn {
+        padding: 10px 20px;
+        font-size: 13px;
       }
 
       .corner-image {
-        width: 150px;
-        bottom: -75px;
-        left: -75px;
+        width: 220px;
+        bottom: -110px;
+        left: -110px;
+      }
+
+      .email-section label {
+        font-size: 14px;
+      }
+
+      .email-section input[type="email"] {
+        width: 220px;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      .email-section button {
+        width: 220px;
+        padding: 10px 18px;
+        font-size: 14px;
       }
     }
   </style>
 </head>
 
-<body>
-  <div class="hero-section">
-    <h1 class="hero-title">OrderUp!</h1>
-    <p class="hero-subtitle">coming soon...</p>
-  </div>
-  <img src="cuppy.png" alt="Cuppy" class="corner-image">
-  <div class="email-section">
-    <form id="email-form" action="https://formspree.io/f/xbdknqdv" method="POST">
-      <label for="email">Get in touch! </label>
-      <input type="email" id="email" name="email" placeholder="your@email.com" required>
-      <input type="hidden" name="_subject"
-        value="Someone just filled in their email on the website for more information">
-      <input type="hidden" name="message"
-        value="Someone just filled in their email on the website for more information">
-      <br>
-      <button type="submit">Submit</button>
-    </form>
-    <p class="success-message" id="success">Thank you!<br>We'll be in touch!</p>
-    <p class="error-message" id="error">Something went wrong. Please try again.</p>
-  </div>
+<div class="hero-section">
+  <h1 class="hero-title">OrderUp!</h1>
+  <p class="hero-subtitle">coming soon...</p>
+</div>
+<div class="toggle-section">
+  <div class="toggle-slider" id="toggle-slider"></div>
+  <button class="toggle-btn active" id="coffee-lover" onclick="setMode('lover')">I like coffee</button>
+  <button class="toggle-btn" id="coffee-seller" onclick="setMode('seller')">I sell coffee</button>
+</div>
+<img src="cuppy.png" alt="Cuppy" class="corner-image">
+<div class="email-section">
+  <form id="email-form" action="https://formspree.io/f/xbdknqdv" method="POST">
+    <label for="email" id="form-label">Join the waitlist!</label>
+    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+    <input type="hidden" name="_subject" id="email-subject" value="Coffee lover wants to join the waitlist">
+    <input type="hidden" name="message" id="email-message" value="A coffee lover signed up to join the waitlist">
+    <input type="hidden" name="user_type" id="user-type" value="coffee_lover">
+    <br>
+    <button type="submit">submit</button>
+  </form>
+  <p class="success-message" id="success">Thank you!<br>We'll be in touch!</p>
+  <p class="error-message" id="error">Something went wrong. Please try again.</p>
+</div>
 
-  <script>
-    const form = document.getElementById('email-form');
-    const successMsg = document.getElementById('success');
-    const errorMsg = document.getElementById('error');
+<script>
+  const form = document.getElementById('email-form');
+  const successMsg = document.getElementById('success');
+  const errorMsg = document.getElementById('error');
+  const formLabel = document.getElementById('form-label');
+  const emailSubject = document.getElementById('email-subject');
+  const emailMessage = document.getElementById('email-message');
+  const userType = document.getElementById('user-type');
+  const loverBtn = document.getElementById('coffee-lover');
+  const sellerBtn = document.getElementById('coffee-seller');
+  const slider = document.getElementById('toggle-slider');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  function setMode(mode) {
+    // Add glow while sliding
+    slider.classList.add('glowing');
+    setTimeout(() => slider.classList.remove('glowing'), 400);
 
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
+    // Animate text change
+    formLabel.classList.add('fade-out');
 
-        if (response.ok) {
-          form.style.display = 'none';
-          successMsg.style.display = 'block';
-        } else {
-          errorMsg.style.display = 'block';
-        }
-      } catch (error) {
+    setTimeout(() => {
+      if (mode === 'lover') {
+        loverBtn.classList.add('active');
+        sellerBtn.classList.remove('active');
+        slider.classList.remove('right');
+        formLabel.textContent = 'Join the waitlist!';
+        emailSubject.value = 'Coffee lover wants to join the waitlist';
+        emailMessage.value = 'A coffee lover signed up to join the waitlist';
+        userType.value = 'coffee_lover';
+      } else {
+        sellerBtn.classList.add('active');
+        loverBtn.classList.remove('active');
+        slider.classList.add('right');
+        formLabel.textContent = 'Get in touch!';
+        emailSubject.value = 'Coffee seller wants to get in touch';
+        emailMessage.value = 'A coffee seller wants to get in touch';
+        userType.value = 'coffee_seller';
+      }
+      formLabel.classList.remove('fade-out');
+    }, 200);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
         errorMsg.style.display = 'block';
       }
-    });
-  </script>
+    } catch (error) {
+      errorMsg.style.display = 'block';
+    }
+  });
+</script>
 </body>
 
 </html>
