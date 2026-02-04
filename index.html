@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>OrderUp!</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="icon" type="image/png" href="cuppy_favicon.png">
+  <link rel="apple-touch-icon" href="cuppy_favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="cuppy.png" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
@@ -57,7 +58,7 @@
       font-size: 16px;
       border: none;
       border-radius: 5px;
-      width: 280px;
+      width: 200px;
       outline: none;
     }
 
@@ -119,6 +120,59 @@
       margin-top: 15px;
       display: none;
     }
+
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-section {
+        top: 60px;
+        width: 90%;
+      }
+
+      .corner-image {
+        width: 200px;
+        bottom: -100px;
+        left: -100px;
+      }
+
+      .email-section {
+        bottom: 40px;
+      }
+
+      .email-section input[type="email"] {
+        width: 180px;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      .email-section button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .corner-image {
+        width: 150px;
+        bottom: -75px;
+        left: -75px;
+      }
+    }
   </style>
 </head>
 
@@ -130,7 +184,7 @@
   <img src="cuppy.png" alt="Cuppy" class="corner-image">
   <div class="email-section">
     <form id="email-form" action="https://formspree.io/f/xbdknqdv" method="POST">
-      <label for="email">fill in email here</label>
+      <label for="email">Get in touch! </label>
       <input type="email" id="email" name="email" placeholder="your@email.com" required>
       <input type="hidden" name="_subject"
         value="Someone just filled in their email on the website for more information">
