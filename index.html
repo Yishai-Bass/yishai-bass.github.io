@@ -1,31 +1,172 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>Your Company Name</title>
+  <title>OrderUp!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
     }
+
     body {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: #111; /* page background color */
+      background: #000;
+      /* page background color */
     }
-    img {
-      max-width: 90vw;
-      max-height: 90vh;
+
+    .corner-image {
+      position: fixed;
+      bottom: -250px;
+      left: -260px;
+      width: 500px;
       height: auto;
-      width: auto;
+      z-index: 10;
+    }
+
+    .email-section {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .email-section label {
       display: block;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .email-section input[type="email"] {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      width: 280px;
+      outline: none;
+    }
+
+    .email-section button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      font-size: 16px;
+      background: #fcdc8b;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .email-section button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(252, 220, 139, 0.4);
+    }
+
+    .hero-section {
+      position: fixed;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 8rem;
+      color: #fff;
+      letter-spacing: -0.05em;
+      margin: 0;
+    }
+
+    .hero-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 2.5rem;
+      color: #fff;
+      letter-spacing: -0.05em;
+      margin-top: 10px;
+    }
+
+    .success-message {
+      color: #fcdc8b;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .error-message {
+      color: #f87171;
+      font-family: Arial, sans-serif;
+      margin-top: 15px;
+      display: none;
     }
   </style>
 </head>
+
 <body>
-  <img src="card.png">
+  <div class="hero-section">
+    <h1 class="hero-title">OrderUp!</h1>
+    <p class="hero-subtitle">coming soon...</p>
+  </div>
+  <img src="cuppy.png" alt="Cuppy" class="corner-image">
+  <div class="email-section">
+    <form id="email-form" action="https://formspree.io/f/xbdknqdv" method="POST">
+      <label for="email">fill in email here</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      <input type="hidden" name="_subject"
+        value="Someone just filled in their email on the website for more information">
+      <input type="hidden" name="message"
+        value="Someone just filled in their email on the website for more information">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+    <p class="success-message" id="success">Thank you!<br>We'll be in touch!</p>
+    <p class="error-message" id="error">Something went wrong. Please try again.</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('email-form');
+    const successMsg = document.getElementById('success');
+    const errorMsg = document.getElementById('error');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      } catch (error) {
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
 </body>
+
 </html>
