@@ -3,39 +3,453 @@
 
 <head>
   <meta charset="utf-8">
-  <title>OrderUp!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background: #000;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-    }
-  </style>
-  <script>
-    function route() {
-      const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if (isMobile) {
-        window.location.replace("mobile_view.html");
-      } else {
-        window.location.replace("web_view.html");
-      }
-    }
-    // Route immediately
-    route();
-    // Also route on resize to handle orientation changes or desktop resizing
-    window.addEventListener('resize', route);
-  </script>
+  <title>OrderUp! | Coffee ready when you are</title>
+  <meta name="description"
+    content="OrderUp! gives coffee drinkers a calmer ordering flow and coffee shops a modern operations platform. Choose the path that fits you and join the waitlist.">
+  <meta name="theme-color" content="#f8fbff">
+  <meta property="og:title" content="OrderUp! | Coffee ready when you are">
+  <meta property="og:description"
+    content="Two focused OrderUp! flows: one for people who drink coffee, one for coffee shops ready to take better orders.">
+  <meta property="og:image" content="orderup-app-icon.png">
+  <link rel="icon" type="image/png" href="orderup-app-icon.png">
+  <link rel="apple-touch-icon" href="orderup-app-icon.png">
+  <link rel="preload" href="orderup-app-icon.png" as="image">
+  <link rel="preload" href="cuppy_excited_trimmed.png" as="image">
+  <link rel="stylesheet" href="site.css?v=20260507-contact-wide">
 </head>
 
 <body>
-  <!-- Fallback if redirect fails or JS is slow -->
-  <p>Loading OrderUp!...</p>
+  <span class="top-anchor" id="top" aria-hidden="true"></span>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand-mark" href="#top" aria-label="OrderUp home">
+        <img src="orderup-app-icon.png" alt="" width="42" height="42">
+        <span>OrderUp!</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <div class="nav-links" id="site-menu">
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#waitlist">Join waitlist</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <img class="hero-cuppy" src="cuppy_excited_trimmed.png" alt="OrderUp Cuppy mascot" width="1536" height="1024">
+        <h1 id="hero-title">Coffee that moves with your day.</h1>
+        <p class="hero-lede" id="hero-lede">
+          Order ahead, order with friends, pay with Apple Pay or Samsung Pay, and make group coffee runs less messy.
+        </p>
+
+        <div class="audience-switch" role="tablist" aria-label="Choose audience">
+          <button class="audience-tab active" type="button" role="tab" aria-selected="true" data-audience="customers">I
+            drink coffee</button>
+          <button class="audience-tab" type="button" role="tab" aria-selected="false" data-audience="shops">I run a
+            coffee shop</button>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="flow">
+      <div class="audience-flow" data-flow="customers">
+        <section class="section section-light" aria-labelledby="customers-title">
+          <div class="section-heading">
+            <h2 id="customers-title">A coffee run one tap away.</h2>
+            <p>OrderUp! is the modernised coffee experience:</p>
+          </div>
+
+          <div class="pitch-grid">
+            <article class="pitch-card pitch-tint-blue">
+              <span class="feature-icon blue"></span>
+              <h3>Order exactly how you like it</h3>
+              <p>Order ahead, customise your order, choose pickup or curbside, pay with wallet, card, Apple or Samsung
+                Pay.</p>
+            </article>
+            <article class="pitch-card pitch-tint-green">
+              <span class="feature-icon green"></span>
+              <h3>Earn Bean Buck reward points</h3>
+              <p>No more punch cards, the bigger your order the bigger your rewards, use your Bean Bucks to buy
+                coffees!
+              </p>
+            </article>
+            <article class="pitch-card pitch-tint-purple">
+              <span class="feature-icon purple"></span>
+              <h3>Send vouchers and gift cards</h3>
+              <p>The perfect gift for the coffee lover in your life, send vouchers and gift cards to friends and family.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section-dark section-customer-path" aria-labelledby="customer-scroll-title">
+          <div class="scroll-story">
+            <div class="story-copy">
+              <h2 id="customer-scroll-title">From craving to pickup in one clean path.</h2>
+              <p>Your flow stays focused on the coffee run: pick a shop, build the cart, choose how to pay, then follow
+                the order until it is ready.</p>
+            </div>
+
+            <div class="flow-grid">
+              <article class="flow-card">
+                <span class="step-number">01</span>
+                <h3>Choose</h3>
+                <p>Nearby shops, live hours, menu search, favourites, and usuals make your orders quick.</p>
+              </article>
+              <article class="flow-card">
+                <span class="step-number">02</span>
+                <h3>Pay</h3>
+                <p>Use the OrderUp! wallet or Apple/Samsung Pay, redeem vouchers, add a tip, and send the order when
+                  timing
+                  suits you.</p>
+              </article>
+              <article class="flow-card">
+                <span class="step-number">03</span>
+                <h3>Pickup</h3>
+                <p>Live status, ready alerts, baritsa messages, and skip the queue.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-light" aria-labelledby="customer-social-title">
+          <div class="split-section">
+            <div>
+              <p class="eyebrow">Making coffee social</p>
+              <h2 id="customer-social-title">Built for friends, gifts, and group runs.</h2>
+              <p>OrderUp! supports shared coffee habits without turning them into admin. See your friends' usuals, join
+                group orders, collect for each other, and send vouchers or gift cards.</p>
+            </div>
+            <div class="detail-list">
+              <article>
+                <h3>Group orders</h3>
+                <p>Start a coffee run, invite people, let everyone add and pay for their items, then submit one order
+                  hassle free.
+                </p>
+              </article>
+              <article>
+                <h3>Usuals</h3>
+                <p>Using artificial intelligence, OrderUp! learns your coffee preferences, and suggests what you
+                  actually buy, not just what is on the menu.</p>
+              </article>
+              <article>
+                <h3>Send vouchers and gift cards</h3>
+                <p>Now that you can see what your friends like to drink, get it for them!</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="audience-flow" data-flow="shops" hidden>
+        <section class="section section-light" aria-labelledby="shops-title">
+          <div class="section-heading">
+            <h2 id="shops-title">More paid orders. Less counter noise.</h2>
+            <p>OrderUp! gives your team a dedicated digital order lane with live prep states, customer messaging,
+              availability
+              controls, and the operational tools that make mobile orders workable during rush.</p>
+          </div>
+
+          <div class="pitch-grid">
+            <article class="pitch-card pitch-tint-blue">
+              <span class="feature-icon blue"></span>
+              <h3>Run orders from a live dashboard</h3>
+              <p>New orders arrive paid for, structured, and ready to be prepared and handed off.</p>
+            </article>
+            <article class="pitch-card pitch-tint-green">
+              <span class="feature-icon green"></span>
+              <h3>Launch without rebuilding your menu by hand</h3>
+              <p>Register your shop, set hours and bank details, upload your logo, and use AI-assisted menu setup from
+                photos, gallery images, or PDFs.</p>
+            </article>
+            <article class="pitch-card pitch-tint-purple">
+              <span class="feature-icon purple"></span>
+              <h3>Keep the counter in control</h3>
+              <p>Message customers, reject with reasons, handle out-of-stock items, pause curbside, and disable
+                unavailable menu choices when service gets tight.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section-dark" aria-labelledby="shop-operations-title">
+          <div class="shop-layout">
+            <div class="merchant-panel merchant-graph" aria-label="Coffee shop analytics preview">
+              <div class="merchant-panel-header">
+                <div>
+                  <span>Today</span>
+                  <strong>Dashboard</strong>
+                </div>
+                <span class="status-pill">+18%</span>
+              </div>
+
+              <div class="graph-metrics">
+                <div>
+                  <span>Orders</span>
+                  <strong>86</strong>
+                </div>
+                <div>
+                  <span>Avg wait</span>
+                  <strong>6m</strong>
+                </div>
+                <div>
+                  <span>Peak</span>
+                  <strong>08:40</strong>
+                </div>
+              </div>
+
+              <div class="merchant-chart" aria-hidden="true">
+                <svg viewBox="0 0 520 270" role="img" focusable="false">
+                  <defs>
+                    <linearGradient id="orderPulseFill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#5cb8ff" stop-opacity="0.34" />
+                      <stop offset="58%" stop-color="#4ad968" stop-opacity="0.16" />
+                      <stop offset="100%" stop-color="#4ad968" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient id="orderPulseLine" x1="0" x2="1" y1="0" y2="0">
+                      <stop offset="0%" stop-color="#5cb8ff" />
+                      <stop offset="58%" stop-color="#4ad968" />
+                      <stop offset="100%" stop-color="#fedf43" />
+                    </linearGradient>
+                  </defs>
+                  <path class="chart-grid" d="M36 54H486M36 106H486M36 158H486M36 210H486" />
+                  <path class="chart-area"
+                    d="M36 211C70 202 82 172 116 169C152 166 162 133 196 126C232 118 244 148 276 132C312 114 326 72 360 76C394 80 404 124 438 113C464 105 474 84 486 70V238H36Z" />
+                  <path class="chart-line"
+                    d="M36 211C70 202 82 172 116 169C152 166 162 133 196 126C232 118 244 148 276 132C312 114 326 72 360 76C394 80 404 124 438 113C464 105 474 84 486 70" />
+                  <g class="chart-points">
+                    <circle cx="116" cy="169" r="6" />
+                    <circle cx="196" cy="126" r="6" />
+                    <circle cx="276" cy="132" r="6" />
+                    <circle cx="360" cy="76" r="7" />
+                    <circle cx="486" cy="70" r="7" />
+                  </g>
+                </svg>
+                <div class="chart-axis">
+                  <span>6am</span>
+                  <span>8am</span>
+                  <span>10am</span>
+                  <span>12pm</span>
+                  <span>2pm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="shop-benefits">
+              <p class="eyebrow">Operations</p>
+              <h2 id="shop-operations-title">Built with baristas to maximise efficieny.</h2>
+              <article>
+                <h3>Notifications that say what matters</h3>
+                <p>Manager alerts include order details, pickup names, notes, large-order signals, ETA warnings, and
+                  customer arrival cues.</p>
+              </article>
+              <article>
+                <h3>Availability and curbside controls</h3>
+                <p>Mark items or choices unavailable, temporarily disable curbside, auto re-enable it later, and
+                  auto-close the store when hours end.</p>
+              </article>
+              <article>
+                <h3>Customer conversation when something changes</h3>
+                <p>Send a message before cancelling, ask about substitutions, and keep the order history clear for both
+                  sides.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-light" aria-labelledby="shop-growth-title">
+          <div class="split-section">
+            <div>
+              <p class="eyebrow">Growth, stats and rewards</p>
+              <h2 id="shop-growth-title">A modern rewards and payments layer, without extra counter work.</h2>
+              <p>A built-in rewards system, payment flow,
+                tips, stats, and settlement tracking that runs behind the order experience.</p>
+            </div>
+            <div class="detail-list">
+              <article>
+                <h3>Stats that match service</h3>
+                <p>Track sales, orders, average order value, tips, top items, and order history by day, week, month, or
+                  all time.</p>
+              </article>
+              <article>
+                <h3>Settlement visibility</h3>
+                <p>Transparent merchant balances, payout calculation, reconciliation, and settlements keep the
+                  financial side traceable.</p>
+              </article>
+              <article>
+                <h3>Rewards built in</h3>
+                <p>Customers always get rewarded on the app, merchants always get payed for redemptions.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="section section-light waitlist-section" id="waitlist" aria-labelledby="waitlist-title">
+      <div class="waitlist-copy">
+        <p class="eyebrow">Join the waitlist</p>
+        <h2 id="waitlist-title">Be first in line when OrderUp! opens.</h2>
+        <p id="waitlist-copy">Tell us where to reach you and we will keep you posted on the launch.</p>
+        <ul class="check-list" id="waitlist-points">
+          <li>Customers get launch updates.</li>
+          <li>Coffee shops get onboarding details and partnership follow-up.</li>
+          <li>Your form is routed with the right signup type.</li>
+        </ul>
+      </div>
+
+      <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xbdknqdv" method="POST">
+        <input type="hidden" name="_subject" id="email-subject" value="Coffee lover wants to join the OrderUp waitlist">
+        <input type="hidden" name="message" id="email-message"
+          value="A coffee lover signed up to join the OrderUp waitlist.">
+        <input type="hidden" name="user_type" id="user-type" value="coffee_lover">
+        <input type="hidden" name="source" value="orderup_website">
+
+        <fieldset>
+          <legend>I am a</legend>
+          <div class="form-toggle" role="radiogroup" aria-label="Signup type">
+            <label>
+              <input type="radio" name="signup_type" value="coffee_lover" checked>
+              <span>Coffee lover</span>
+            </label>
+            <label>
+              <input type="radio" name="signup_type" value="coffee_shop">
+              <span>Coffee shop</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" placeholder="Your name" required>
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+        </label>
+
+        <label class="phone-field" id="phone-field" hidden>
+          <span>Phone</span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+27 82 123 4567" disabled>
+        </label>
+
+        <div class="shop-fields" id="shop-fields" hidden>
+          <label>
+            <span>Shop name</span>
+            <input type="text" name="shop_name" placeholder="Your coffee shop">
+          </label>
+          <label>
+            <span>Location</span>
+            <input type="text" name="shop_location" placeholder="City or neighbourhood">
+          </label>
+          <label>
+            <span>Current setup</span>
+            <select name="shop_setup">
+              <option value="">Choose one</option>
+              <option>Single location</option>
+              <option>Multiple locations</option>
+              <option>Pop-up or mobile bar</option>
+              <option>Opening soon</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          <span>Anything we should know?</span>
+          <textarea name="note" rows="4" placeholder="Tell us what would make OrderUp useful for you."></textarea>
+        </label>
+
+        <button class="button button-primary form-submit" type="submit">
+          <span class="submit-text">Join the waitlist</span>
+          <span class="submit-loader" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section section-light faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="section-heading compact">
+        <h2 id="faq-title">Frequently asked questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>Is OrderUp! live yet?</summary>
+          <p>Almost! Join the waitlist to stay updated.</p>
+        </details>
+        <details data-flow="shops" hidden>
+          <summary>Can coffee shops sign up before launch?</summary>
+          <p>Yes. Choose the coffee shop signup option and share your shop details so the team can follow up with
+            onboarding information.</p>
+        </details>
+        <details data-flow="customers">
+          <summary>What does OrderUp! do for me?</summary>
+          <p>Earn Bean Bucks, skip the queue, order ahead. Send vouchers and gift cards. Order as a group.</p>
+        </details>
+        <details data-flow="shops" hidden>
+          <summary>What does OrderUp! do for my coffee shop?</summary>
+          <p>Registration, AI menu setup, live orders, status controls, customer messaging, availability tools, curbside
+            handling, stats, tips, and settlement visibility.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section section-light contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="section-heading compact">
+        <h2 id="contact-title">Contact OrderUp!</h2>
+        <p>Speak to the team about launch access, coffee shop onboarding, or anything else you need.</p>
+      </div>
+
+      <div class="contact-grid" aria-label="OrderUp contact details">
+        <a class="contact-card contact-card-email" href="mailto:team@order-up.co.za">
+          <span>Email</span>
+          <strong>team@order-up.co.za</strong>
+        </a>
+        <div class="contact-card contact-card-phones">
+          <span>Cellphones</span>
+          <div class="contact-lines">
+            <a href="tel:+27836570642">
+              <span>Cell 1</span>
+              <strong>0836570642</strong>
+            </a>
+            <a href="tel:+27837082072">
+              <span>Cell 2</span>
+              <strong>0837082072</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand-mark footer-brand" href="#top">
+        <img src="orderup-app-icon.png" alt="" width="34" height="34">
+        <span>OrderUp!</span>
+      </a>
+      <p>ready when you are.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#faq">FAQ</a>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260507-toggle-fix" defer></script>
 </body>
 
 </html>
