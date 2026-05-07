@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon" href="real_o_icon.png?v=20260507-real-o">
   <link rel="preload" href="real_o_icon.png?v=20260507-real-o" as="image">
   <link rel="preload" href="cuppy_excited_trimmed.png" as="image">
-  <link rel="stylesheet" href="site.css?v=20260507-contact-wide">
+  <link rel="stylesheet" href="site.css?v=20260507-shop-ops-cards">
 </head>
 
 <body>
@@ -49,7 +49,10 @@
   <main id="main">
     <section class="hero-section" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <img class="hero-cuppy" src="cuppy_excited_trimmed.png" alt="OrderUp Cuppy mascot" width="1536" height="1024">
+        <span class="hero-cuppy-motion">
+          <img class="hero-cuppy" src="cuppy_excited_trimmed.png" alt="OrderUp Cuppy mascot" width="812" height="825"
+            fetchpriority="high" decoding="sync">
+        </span>
         <h1 id="hero-title">Coffee that moves with your day.</h1>
         <p class="hero-lede" id="hero-lede">
           Order ahead, order with friends, pay with Apple Pay or Samsung Pay, and make group coffee runs less messy.
@@ -187,70 +190,13 @@
 
         <section class="section section-dark" aria-labelledby="shop-operations-title">
           <div class="shop-layout">
-            <div class="merchant-panel merchant-graph" aria-label="Coffee shop analytics preview">
-              <div class="merchant-panel-header">
-                <div>
-                  <span>Today</span>
-                  <strong>Dashboard</strong>
-                </div>
-                <span class="status-pill">+18%</span>
-              </div>
-
-              <div class="graph-metrics">
-                <div>
-                  <span>Orders</span>
-                  <strong>86</strong>
-                </div>
-                <div>
-                  <span>Avg wait</span>
-                  <strong>6m</strong>
-                </div>
-                <div>
-                  <span>Peak</span>
-                  <strong>08:40</strong>
-                </div>
-              </div>
-
-              <div class="merchant-chart" aria-hidden="true">
-                <svg viewBox="0 0 520 270" role="img" focusable="false">
-                  <defs>
-                    <linearGradient id="orderPulseFill" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0%" stop-color="#5cb8ff" stop-opacity="0.34" />
-                      <stop offset="58%" stop-color="#4ad968" stop-opacity="0.16" />
-                      <stop offset="100%" stop-color="#4ad968" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="orderPulseLine" x1="0" x2="1" y1="0" y2="0">
-                      <stop offset="0%" stop-color="#5cb8ff" />
-                      <stop offset="58%" stop-color="#4ad968" />
-                      <stop offset="100%" stop-color="#fedf43" />
-                    </linearGradient>
-                  </defs>
-                  <path class="chart-grid" d="M36 54H486M36 106H486M36 158H486M36 210H486" />
-                  <path class="chart-area"
-                    d="M36 211C70 202 82 172 116 169C152 166 162 133 196 126C232 118 244 148 276 132C312 114 326 72 360 76C394 80 404 124 438 113C464 105 474 84 486 70V238H36Z" />
-                  <path class="chart-line"
-                    d="M36 211C70 202 82 172 116 169C152 166 162 133 196 126C232 118 244 148 276 132C312 114 326 72 360 76C394 80 404 124 438 113C464 105 474 84 486 70" />
-                  <g class="chart-points">
-                    <circle cx="116" cy="169" r="6" />
-                    <circle cx="196" cy="126" r="6" />
-                    <circle cx="276" cy="132" r="6" />
-                    <circle cx="360" cy="76" r="7" />
-                    <circle cx="486" cy="70" r="7" />
-                  </g>
-                </svg>
-                <div class="chart-axis">
-                  <span>6am</span>
-                  <span>8am</span>
-                  <span>10am</span>
-                  <span>12pm</span>
-                  <span>2pm</span>
-                </div>
-              </div>
-            </div>
-
             <div class="shop-benefits">
-              <p class="eyebrow">Operations</p>
-              <h2 id="shop-operations-title">Built with baristas to maximise efficieny.</h2>
+              <div class="shop-benefits-heading">
+                <p class="eyebrow">Operations</p>
+                <h2 id="shop-operations-title">Built with baristas to maximise efficiency.</h2>
+                <p>Give the team fewer scattered decisions during a rush, with clear controls for orders, availability,
+                  and customer updates.</p>
+              </div>
               <article>
                 <h3>Notifications that say what matters</h3>
                 <p>Manager alerts include order details, pickup names, notes, large-order signals, ETA warnings, and
@@ -302,7 +248,7 @@
     <section class="section section-light waitlist-section" id="waitlist" aria-labelledby="waitlist-title">
       <div class="waitlist-copy">
         <p class="eyebrow">Join the waitlist</p>
-        <h2 id="waitlist-title">Be first in line when OrderUp! opens.</h2>
+        <h2 id="waitlist-title">Be first in line when OrderUp! launches.</h2>
         <p id="waitlist-copy">Tell us where to reach you and we will keep you posted on the launch.</p>
         <ul class="check-list" id="waitlist-points">
           <li>Customers get launch updates.</li>
