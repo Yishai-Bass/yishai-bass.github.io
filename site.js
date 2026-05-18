@@ -63,19 +63,35 @@ function setAudience(audience) {
   if (heroEyebrow) {
     heroEyebrow.textContent = content.eyebrow;
   }
-  heroTitle.textContent = content.title;
-  heroLede.textContent = content.lede;
+  if (heroTitle) {
+    heroTitle.textContent = content.title;
+  }
+  if (heroLede) {
+    heroLede.textContent = content.lede;
+  }
   if (navFlow) {
     navFlow.textContent = content.flowNav;
   }
-  waitlistTitle.textContent = audience === "shops"
-    ? "Bring your coffee shop into the first OrderUp! launch wave."
-    : "Be first in line when OrderUp! opens.";
-  waitlistCopy.textContent = content.waitlistCopy;
-  emailSubject.value = content.subject;
-  emailMessage.value = content.message;
-  userType.value = content.userType;
-  submitText.textContent = content.formSubmit;
+  if (waitlistTitle) {
+    waitlistTitle.textContent = audience === "shops"
+      ? "Bring your coffee shop into the first OrderUp! launch wave."
+      : "Be first in line when OrderUp! opens.";
+  }
+  if (waitlistCopy) {
+    waitlistCopy.textContent = content.waitlistCopy;
+  }
+  if (emailSubject) {
+    emailSubject.value = content.subject;
+  }
+  if (emailMessage) {
+    emailMessage.value = content.message;
+  }
+  if (userType) {
+    userType.value = content.userType;
+  }
+  if (submitText) {
+    submitText.textContent = content.formSubmit;
+  }
 
   waitlistPoints.forEach((point, index) => {
     point.textContent = content.waitlistPoints[index] || "";
@@ -96,7 +112,9 @@ function setAudience(audience) {
   });
 
   const isShop = audience === "shops";
-  shopFields.hidden = !isShop;
+  if (shopFields) {
+    shopFields.hidden = !isShop;
+  }
   if (phoneField && phoneInput) {
     phoneField.hidden = !isShop;
     phoneInput.disabled = !isShop;

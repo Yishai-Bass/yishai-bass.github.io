@@ -1088,6 +1088,87 @@ h1 {
   font-weight: 780;
 }
 
+.footer-links a:hover,
+.footer-links a:focus-visible,
+.footer-links a[aria-current="page"] {
+  color: var(--ink);
+}
+
+.legal-main {
+  padding: 126px clamp(20px, 5vw, 72px) 72px;
+  background:
+    linear-gradient(180deg, rgba(238, 247, 255, 0.82), rgba(248, 251, 255, 0.98) 260px),
+    var(--surface-raised);
+}
+
+.legal-document {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: #fff;
+  box-shadow: var(--shadow-tight);
+}
+
+.legal-document h1,
+.legal-document h2,
+.legal-document h3 {
+  margin: 0 0 14px;
+  line-height: 1.16;
+  letter-spacing: 0;
+}
+
+.legal-document h1 {
+  max-width: none;
+}
+
+.legal-document h2 {
+  padding-top: 20px;
+}
+
+.legal-document h3 {
+  padding-top: 12px;
+}
+
+.legal-document p,
+.legal-document li {
+  line-height: 1.65;
+}
+
+.legal-document p {
+  margin: 0 0 16px;
+}
+
+.legal-document ul,
+.legal-document ol {
+  margin: 0 0 18px;
+  padding-left: 1.35rem;
+}
+
+.legal-document li {
+  margin: 8px 0;
+}
+
+.legal-document a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-toc {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.legal-generated {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -1187,6 +1268,10 @@ h1 {
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .legal-main {
+    padding-top: 108px;
   }
 }
 
