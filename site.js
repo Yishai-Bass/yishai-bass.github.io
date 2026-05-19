@@ -42,7 +42,9 @@ const waitlistCopy = document.querySelector("#waitlist-copy");
 const waitlistTitle = document.querySelector("#waitlist-title");
 const waitlistPoints = document.querySelectorAll("#waitlist-points li");
 const waitlistForm = document.querySelector("#waitlist-form");
-const formStatus = document.querySelector("#form-status");
+const formStatus = waitlistForm?.querySelector("#form-status");
+const supportForm = document.querySelector("#support-form");
+const supportFormStatus = supportForm?.querySelector("#support-form-status");
 const shopFields = document.querySelector("#shop-fields");
 const phoneField = document.querySelector("#phone-field");
 const phoneInput = phoneField?.querySelector("input");
@@ -50,7 +52,7 @@ const emailSubject = document.querySelector("#email-subject");
 const emailMessage = document.querySelector("#email-message");
 const userType = document.querySelector("#user-type");
 const signupRadios = document.querySelectorAll('input[name="signup_type"]');
-const submitText = document.querySelector(".submit-text");
+const submitText = waitlistForm?.querySelector(".submit-text");
 const flowSections = document.querySelectorAll("[data-flow]");
 
 let currentAudience = "customers";
@@ -203,6 +205,47 @@ waitlistForm?.addEventListener("submit", async (event) => {
     formStatus.classList.add("error");
   } finally {
     waitlistForm.classList.remove("is-submitting");
+    submitButton.disabled = false;
+  }
+});
+
+supportForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  supportFormStatus.textContent = "";
+  supportFormStatus.className = "form-status";
+
+  if (!supportForm.reportValidity()) {
+    return;
+  }
+
+  supportForm.classList.add("is-submitting");
+  const submitButton = supportForm.querySelector("button[type='submit']");
+  submitButton.disabled = true;
+
+  const formData = new FormData(supportForm);
+  formData.set("submitted_at", new Date().toISOString());
+
+  try {
+    const response = await fetch(supportForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Support submission failed");
+    }
+
+    supportForm.reset();
+    supportFormStatus.textContent = "Thank you. Your support request has been sent.";
+    supportFormStatus.classList.add("success");
+  } catch (error) {
+    supportFormStatus.textContent = "Something went wrong. Please email team@order-up.co.za or try again in a moment.";
+    supportFormStatus.classList.add("error");
+  } finally {
+    supportForm.classList.remove("is-submitting");
     submitButton.disabled = false;
   }
 });
