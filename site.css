@@ -1149,6 +1149,14 @@ h1 {
   text-underline-offset: 3px;
 }
 
+.account-deletion-layout {
+  align-items: start;
+}
+
+.account-deletion-layout .waitlist-form textarea {
+  min-height: 150px;
+}
+
 .site-footer {
   display: flex;
   align-items: center;

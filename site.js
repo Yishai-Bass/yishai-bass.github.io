@@ -45,6 +45,8 @@ const waitlistForm = document.querySelector("#waitlist-form");
 const formStatus = waitlistForm?.querySelector("#form-status");
 const supportForm = document.querySelector("#support-form");
 const supportFormStatus = supportForm?.querySelector("#support-form-status");
+const accountDeletionForm = document.querySelector("#account-deletion-form");
+const accountDeletionFormStatus = accountDeletionForm?.querySelector("#account-deletion-form-status");
 const shopFields = document.querySelector("#shop-fields");
 const phoneField = document.querySelector("#phone-field");
 const phoneInput = phoneField?.querySelector("input");
@@ -246,6 +248,47 @@ supportForm?.addEventListener("submit", async (event) => {
     supportFormStatus.classList.add("error");
   } finally {
     supportForm.classList.remove("is-submitting");
+    submitButton.disabled = false;
+  }
+});
+
+accountDeletionForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  accountDeletionFormStatus.textContent = "";
+  accountDeletionFormStatus.className = "form-status";
+
+  if (!accountDeletionForm.reportValidity()) {
+    return;
+  }
+
+  accountDeletionForm.classList.add("is-submitting");
+  const submitButton = accountDeletionForm.querySelector("button[type='submit']");
+  submitButton.disabled = true;
+
+  const formData = new FormData(accountDeletionForm);
+  formData.set("submitted_at", new Date().toISOString());
+
+  try {
+    const response = await fetch(accountDeletionForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Account deletion submission failed");
+    }
+
+    accountDeletionForm.reset();
+    accountDeletionFormStatus.textContent = "It's been submitted. The OrderUp team will review your request and contact you soon.";
+    accountDeletionFormStatus.classList.add("success");
+  } catch (error) {
+    accountDeletionFormStatus.textContent = "Something went wrong. Please email team@order-up.co.za or try again in a moment.";
+    accountDeletionFormStatus.classList.add("error");
+  } finally {
+    accountDeletionForm.classList.remove("is-submitting");
     submitButton.disabled = false;
   }
 });
