@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="OrderUp_lid_icon_no_translucency.png?v=20260513-lid-icon-solid">
   <link rel="preload" href="OrderUp_lid_icon_no_translucency.png?v=20260513-lid-icon-solid" as="image">
   <link rel="preload" href="cuppy_excited_trimmed.png" as="image">
-  <link rel="stylesheet" href="site.css?v=20260520-account-deletion">
+  <link rel="stylesheet" href="site.css?v=20260720-date-scroll-gap">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <a href="#faq">FAQ</a>
         <a href="support">Support</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cta" href="#waitlist">Join waitlist</a>
+        <a class="nav-cta" href="https://order-up.chottu.link/hotdownload" data-primary-cta>Download app</a>
       </div>
     </nav>
   </header>
@@ -55,21 +55,28 @@
         </span>
         <h1 id="hero-title">Coffee that moves with your day.</h1>
         <p class="hero-lede" id="hero-lede">
-          Order ahead, order with friends, pay with Apple Pay or Samsung Pay, and make group coffee runs less messy.
+          Order ahead at participating coffee shops, order with friends, pay with Apple Pay or Samsung Pay, and earn Bean
+          Bucks on the coffees you already love.
         </p>
 
         <div class="audience-switch" role="tablist" aria-label="Choose audience">
-          <button class="audience-tab active" type="button" role="tab" aria-selected="true" data-audience="customers">I
-            drink coffee</button>
-          <button class="audience-tab" type="button" role="tab" aria-selected="false" data-audience="shops">I run a
-            coffee shop</button>
+          <button class="audience-tab active" type="button" role="tab" aria-selected="true"
+            data-audience="drinkers">For coffee drinkers</button>
+          <button class="audience-tab" type="button" role="tab" aria-selected="false"
+            data-audience="corporate">For workplace coffee shops</button>
+          <button class="audience-tab" type="button" role="tab" aria-selected="false"
+            data-audience="shops">For coffee shops</button>
         </div>
 
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button button-primary" href="https://order-up.chottu.link/hotdownload" data-primary-cta>Download the app</a>
+          <a class="button button-secondary" href="#contact">Contact us</a>
+        </div>
       </div>
     </section>
 
     <div id="flow">
-      <div class="audience-flow" data-flow="customers">
+      <div class="audience-flow" data-flow="drinkers">
         <section class="section section-light" aria-labelledby="customers-title">
           <div class="section-heading">
             <h2 id="customers-title">A coffee run one tap away.</h2>
@@ -123,7 +130,7 @@
               <article class="flow-card">
                 <span class="step-number">03</span>
                 <h3>Pickup</h3>
-                <p>Live status, ready alerts, baritsa messages, and skip the queue.</p>
+                <p>Live status, ready alerts, barista messages, and skip the queue.</p>
               </article>
             </div>
           </div>
@@ -158,32 +165,32 @@
         </section>
       </div>
 
-      <div class="audience-flow" data-flow="shops" hidden>
-        <section class="section section-light" aria-labelledby="shops-title">
+      <div class="audience-flow" data-flow="corporate" hidden>
+        <section class="section section-light" aria-labelledby="corporate-title">
           <div class="section-heading">
-            <h2 id="shops-title">More paid orders. Less counter noise.</h2>
-            <p>OrderUp! gives your team a dedicated digital order lane with live prep states, customer messaging,
-              availability
-              controls, and the operational tools that make mobile orders workable during rush.</p>
+            <h2 id="corporate-title">Coffee from the office café, without leaving the desk.</h2>
+            <p>OrderUp! gives employees a private way to order ahead from the coffee shop inside their workplace, while
+              giving the café team a clear, paid order queue to prepare.</p>
           </div>
 
           <div class="pitch-grid">
             <article class="pitch-card pitch-tint-blue">
               <span class="feature-icon blue"></span>
-              <h3>Run orders from a live dashboard</h3>
-              <p>New orders arrive paid for, structured, and ready to be prepared and handed off.</p>
+              <h3>Let employees order from their desks</h3>
+              <p>Employees can browse the menu, customise and pay before walking over, then collect when their order is
+                ready.</p>
             </article>
             <article class="pitch-card pitch-tint-green">
               <span class="feature-icon green"></span>
-              <h3>Launch without rebuilding your menu by hand</h3>
-              <p>Register your shop, set hours and bank details, upload your logo, and use AI-assisted menu setup from
-                photos, gallery images, or PDFs.</p>
+              <h3>Keep the coffee shop employees-only</h3>
+              <p>Your shop is marked as private and locked to approved employees, so public users cannot find it or
+                place orders.</p>
             </article>
             <article class="pitch-card pitch-tint-purple">
               <span class="feature-icon purple"></span>
-              <h3>Keep the counter in control</h3>
-              <p>Message customers, reject with reasons, handle out-of-stock items, pause curbside, and disable
-                unavailable menu choices when service gets tight.</p>
+              <h3>Issue coffee vouchers in a few taps</h3>
+              <p>Send digital coffee vouchers for employee rewards, team moments, meetings, or a company-wide treat
+                without paper coupons or counter admin.</p>
             </article>
           </div>
         </section>
@@ -192,25 +199,24 @@
           <div class="shop-layout">
             <div class="shop-benefits">
               <div class="shop-benefits-heading">
-                <p class="eyebrow">Operations</p>
-                <h2 id="shop-operations-title">Built with baristas to maximise efficiency.</h2>
-                <p>Give the team fewer scattered decisions during a rush, with clear controls for orders, availability,
-                  and customer updates.</p>
+                <p class="eyebrow">Rush-hour flow</p>
+                <h2 id="shop-operations-title">Beat the morning rush without building a queue.</h2>
+                <p>Employees order before leaving their desks, while the café sees a structured queue and can prepare
+                  each coffee before the customer reaches the counter.</p>
               </div>
               <article>
-                <h3>Notifications that say what matters</h3>
-                <p>Manager alerts include order details, pickup names, notes, large-order signals, ETA warnings, and
-                  customer arrival cues.</p>
+                <h3>Fewer queues at peak times</h3>
+                <p>Spread demand across the morning and lunch rush, reduce crowding around the counter, and keep pickup
+                  moving.</p>
               </article>
               <article>
-                <h3>Availability and curbside controls</h3>
-                <p>Mark items or choices unavailable, temporarily disable curbside, auto re-enable it later, and
-                  auto-close the store when hours end.</p>
+                <h3>Clear pickup timing</h3>
+                <p>Employees can follow their order status and arrive when it is ready instead of waiting by the counter.</p>
               </article>
               <article>
-                <h3>Customer conversation when something changes</h3>
-                <p>Send a message before cancelling, ask about substitutions, and keep the order history clear for both
-                  sides.</p>
+                <h3>Simple live controls for the café team</h3>
+                <p>Update item availability, manage prep, message employees about changes, and keep the order history
+                  clear.</p>
               </article>
             </div>
           </div>
@@ -219,67 +225,84 @@
         <section class="section section-light" aria-labelledby="shop-growth-title">
           <div class="split-section">
             <div>
-              <p class="eyebrow">Growth, stats and rewards</p>
-              <h2 id="shop-growth-title">A modern rewards and payments layer, without extra counter work.</h2>
-              <p>A built-in rewards system, payment flow,
-                tips, stats, and settlement tracking that runs behind the order experience.</p>
+              <p class="eyebrow">A better workplace benefit</p>
+              <h2 id="shop-growth-title">Easy for employees. Practical for the team running it.</h2>
+              <p>Turn the workplace coffee shop into a useful employee benefit without adding more manual admin for
+                facilities, HR, or the barista team.</p>
             </div>
             <div class="detail-list">
               <article>
-                <h3>Stats that match service</h3>
-                <p>Track sales, orders, average order value, tips, top items, and order history by day, week, month, or
-                  all time.</p>
+                <h3>Vouchers for rewards and occasions</h3>
+                <p>Give a coffee to an individual, a team, or the wider company for recognition, celebrations, meetings,
+                  and events.</p>
               </article>
               <article>
-                <h3>Settlement visibility</h3>
-                <p>Transparent merchant balances, payout calculation, reconciliation, and settlements keep the
-                  financial side traceable.</p>
+                <h3>Support one shop or several</h3>
+                <p>Run a single building café or manage several workplace coffee shops while keeping each store's menu,
+                  hours, and orders clear.</p>
               </article>
               <article>
-                <h3>Rewards built in</h3>
-                <p>Customers always get rewarded on the app, merchants always get payed for redemptions.</p>
+                <h3>Useful reporting</h3>
+                <p>See orders, sales, popular items, voucher use, tips, and settlement history without building a
+                  separate reporting process.</p>
               </article>
             </div>
           </div>
         </section>
       </div>
+
+      <div class="audience-flow" data-flow="shops" hidden>
+        <section class="section section-light" aria-labelledby="shops-title">
+          <div class="section-heading">
+            <h2 id="shops-title">More paid orders. Less counter pressure.</h2>
+            <p>OrderUp! gives independent coffee shops a simple digital order lane with live prep controls,
+              customer messaging, built-in rewards, and less friction during rush.</p>
+          </div>
+
+          <div class="pitch-grid">
+            <article class="pitch-card pitch-tint-blue">
+              <span class="feature-icon blue"></span>
+              <h3>Receive paid orders in one place</h3>
+              <p>Orders arrive clearly structured, paid for, and ready for your team to prepare and hand off.</p>
+            </article>
+            <article class="pitch-card pitch-tint-green">
+              <span class="feature-icon green"></span>
+              <h3>Stay in control during rush</h3>
+              <p>Update availability, manage curbside pickup, message customers, and keep the queue moving.</p>
+            </article>
+            <article class="pitch-card pitch-tint-purple">
+              <span class="feature-icon purple"></span>
+              <h3>Keep regulars coming back</h3>
+              <p>Offer built-in Bean Buck rewards while tracking orders, sales, tips, and settlements.</p>
+            </article>
+          </div>
+        </section>
+      </div>
     </div>
 
-    <section class="section section-light waitlist-section" id="waitlist" aria-labelledby="waitlist-title">
+    <span class="top-anchor" id="waitlist" aria-hidden="true"></span>
+    <section class="section section-light waitlist-section" id="get-in-touch" aria-labelledby="waitlist-title" hidden>
       <div class="waitlist-copy">
-        <p class="eyebrow">Join the waitlist</p>
-        <h2 id="waitlist-title">Be first in line when OrderUp! launches.</h2>
-        <p id="waitlist-copy">Tell us where to reach you and we will keep you posted on the launch.</p>
+        <p class="eyebrow" id="waitlist-eyebrow">For coffee shops and operators</p>
+        <h2 id="waitlist-title">Book an OrderUp! demo for your coffee shop.</h2>
+        <p id="waitlist-copy">Tell us about your shop and we will show you how OrderUp! can support ordering, rewards,
+          and pickup.</p>
         <ul class="check-list" id="waitlist-points">
-          <li>Customers get launch updates.</li>
-          <li>Coffee shops get onboarding details and partnership follow-up.</li>
-          <li>Your form is routed with the right signup type.</li>
+          <li>See the merchant dashboard, live order flow, and availability controls.</li>
+          <li>Talk through your menu setup, onboarding, and launch.</li>
+          <li>Ask about payouts, loyalty, reporting, and day-to-day operations.</li>
         </ul>
       </div>
 
       <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xbdknqdv" method="POST">
-        <input type="hidden" name="_subject" id="email-subject" value="Coffee lover wants to join the OrderUp waitlist">
+        <input type="hidden" name="_subject" id="email-subject" value="Coffee shop requested an OrderUp demo">
         <input type="hidden" name="message" id="email-message"
-          value="A coffee lover signed up to join the OrderUp waitlist.">
-        <input type="hidden" name="user_type" id="user-type" value="coffee_lover">
+          value="A coffee shop or operator requested an OrderUp demo.">
+        <input type="hidden" name="user_type" id="user-type" value="coffee_shop">
         <input type="hidden" name="source" value="orderup_website">
 
-        <fieldset>
-          <legend>I am a</legend>
-          <div class="form-toggle" role="radiogroup" aria-label="Signup type">
-            <label>
-              <input type="radio" name="signup_type" value="coffee_lover" checked>
-              <span>Coffee lover</span>
-            </label>
-            <label>
-              <input type="radio" name="signup_type" value="coffee_shop">
-              <span>Coffee shop</span>
-            </label>
-          </div>
-        </fieldset>
-
         <label>
-          <span>Name</span>
+          <span>Your name</span>
           <input type="text" name="name" autocomplete="name" placeholder="Your name" required>
         </label>
 
@@ -288,39 +311,72 @@
           <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
         </label>
 
-        <label class="phone-field" id="phone-field" hidden>
+        <label class="phone-field" id="phone-field">
           <span>Phone</span>
-          <input type="tel" name="phone" autocomplete="tel" placeholder="+27 82 123 4567" disabled>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+27 82 123 4567" required>
         </label>
 
-        <div class="shop-fields" id="shop-fields" hidden>
+        <div class="shop-fields" id="shop-fields">
           <label>
-            <span>Shop name</span>
-            <input type="text" name="shop_name" placeholder="Your coffee shop">
+            <span id="business-name-label">Business name</span>
+            <input type="text" id="business-name-input" name="shop_name" autocomplete="organization"
+              placeholder="Coffee shop name" required>
           </label>
           <label>
-            <span>Location</span>
-            <input type="text" name="shop_location" placeholder="City or neighbourhood">
+            <span id="shop-location-label">Location</span>
+            <input type="text" id="shop-location-input" name="shop_location" placeholder="City or neighbourhood">
           </label>
           <label>
-            <span>Current setup</span>
-            <select name="shop_setup">
+            <span id="shop-setup-label">Current setup</span>
+            <select id="shop-setup-select" name="shop_setup">
               <option value="">Choose one</option>
-              <option>Single location</option>
-              <option>Multiple locations</option>
+              <option>Single coffee shop</option>
+              <option>2-5 coffee shops</option>
+              <option>6+ coffee shops</option>
+              <option>Franchise or group operator</option>
               <option>Pop-up or mobile bar</option>
               <option>Opening soon</option>
             </select>
           </label>
         </div>
 
+        <fieldset class="booking-field" aria-describedby="booking-selection">
+          <legend>Choose your meeting slot <span>(South Africa time)</span></legend>
+
+          <div class="booking-picker" id="booking-picker">
+            <div class="booking-step">
+              <div class="booking-step-heading">
+                <strong>Date</strong>
+              </div>
+              <div class="booking-dates" id="booking-dates" aria-label="Available meeting dates"></div>
+            </div>
+
+            <div class="booking-step">
+              <div class="booking-step-heading">
+                <strong>Time</strong>
+              </div>
+              <div class="booking-slots" id="booking-slots" aria-label="Meeting times"></div>
+            </div>
+
+            <div class="booking-selection" id="booking-selection" aria-live="polite">
+              <span class="booking-selection-icon" aria-hidden="true">✓</span>
+              <span>Choose a time to reserve your demo.</span>
+            </div>
+
+            <input type="hidden" name="meeting_date" id="meeting-date">
+            <input type="hidden" name="meeting_time" id="meeting-time">
+            <input type="hidden" name="meeting_timezone" value="Africa/Johannesburg">
+          </div>
+        </fieldset>
+
         <label>
-          <span>Anything we should know?</span>
-          <textarea name="note" rows="4" placeholder="Tell us what would make OrderUp useful for you."></textarea>
+          <span>What would you like to discuss? <span class="field-optional">(Optional)</span></span>
+          <textarea id="demo-note" name="note" rows="4"
+            placeholder="Tell us about your ordering setup or demo goals."></textarea>
         </label>
 
         <button class="button button-primary form-submit" type="submit">
-          <span class="submit-text">Join the waitlist</span>
+          <span class="submit-text">Book a demo</span>
           <span class="submit-loader" aria-hidden="true"></span>
         </button>
 
@@ -335,22 +391,33 @@
 
       <div class="faq-list">
         <details>
-          <summary>Is OrderUp! live yet?</summary>
-          <p>Almost! Join the waitlist to stay updated.</p>
+          <summary>Is OrderUp! live?</summary>
+          <p>Yes. The app is live, with availability depending on participating coffee shops and the features enabled
+            for each location.</p>
         </details>
         <details data-flow="shops" hidden>
-          <summary>Can coffee shops sign up before launch?</summary>
-          <p>Yes. Choose the coffee shop signup option and share your shop details so the team can follow up with
-            onboarding information.</p>
+          <summary>How do coffee shops get started?</summary>
+          <p>Book a demo and share your shop details. The team can help with registration, menu setup, operating
+            controls, payouts, and launch planning.</p>
         </details>
-        <details data-flow="customers">
+        <details data-flow="drinkers">
           <summary>What does OrderUp! do for me?</summary>
           <p>Earn Bean Bucks, skip the queue, order ahead. Send vouchers and gift cards. Order as a group.</p>
         </details>
         <details data-flow="shops" hidden>
-          <summary>What does OrderUp! do for my coffee shop?</summary>
+          <summary>What does OrderUp! do for coffee shop operators?</summary>
           <p>Registration, AI menu setup, live orders, status controls, customer messaging, availability tools, curbside
             handling, stats, tips, and settlement visibility.</p>
+        </details>
+        <details data-flow="corporate" hidden>
+          <summary>Who can order from a workplace coffee shop?</summary>
+          <p>Only approved employees can access and order from it. The shop is marked as employees-only and stays hidden
+            from public users.</p>
+        </details>
+        <details data-flow="corporate" hidden>
+          <summary>Can we send coffee vouchers to employees?</summary>
+          <p>Yes. Digital vouchers can be issued for individuals, teams, recognition, meetings, events, or a wider
+            workplace coffee treat.</p>
         </details>
       </div>
     </section>
@@ -358,7 +425,7 @@
     <section class="section section-light contact-section" id="contact" aria-labelledby="contact-title">
       <div class="section-heading compact">
         <h2 id="contact-title">Contact OrderUp!</h2>
-        <p>Speak to the team about launch access, coffee shop onboarding, or anything else you need.</p>
+        <p>Speak to the team about coffee shop demos, onboarding, support, or anything else you need.</p>
       </div>
 
       <div class="contact-grid" aria-label="OrderUp contact details">
@@ -400,7 +467,7 @@
     </div>
   </footer>
 
-  <script src="site.js?v=20260520-account-deletion" defer></script>
+  <script src="site.js?v=20260720-workplace-coffee" defer></script>
 </body>
 
 </html>
