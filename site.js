@@ -121,7 +121,7 @@ const meetingLaterAvailability = [
 let meetingDates = []
 let selectedMeetingDate = '';
 
-let currentAudience = 'drinkers';
+let currentAudience = 'shops';
 
 function getSouthAfricaCalendarDate (now = new Date()) {
   const parts = new Intl.DateTimeFormat('en-ZA', {
