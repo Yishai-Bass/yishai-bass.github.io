@@ -1,4 +1,50 @@
 const appDownloadUrl = 'https://order-up.chottu.link/hotdownload';
+const featuredShopLogos = [
+  {
+    name: 'Motherland | Woodstock',
+    url: 'assets/shop-logos/motherland.jpg'
+  },
+  {
+    name: 'Brewsky | Sandler Road',
+    url: 'assets/shop-logos/brewsky.jpg'
+  },
+  {
+    name: 'Hinae Cafe',
+    url: 'assets/shop-logos/hinae.jpg'
+  },
+  {
+    name: 'Shift Silvamonte',
+    url: 'assets/shop-logos/shift-silvamonte.jpg'
+  },
+  {
+    name: 'Segells Baked Goods (SBG)',
+    url: 'assets/shop-logos/segells-baked-goods.jpg'
+  },
+  {
+    name: 'My Daily Coffee Stop',
+    url: 'assets/shop-logos/my-daily-coffee-stop.jpg'
+  },
+  {
+    name: 'Xpresso',
+    url: 'assets/shop-logos/xpresso.jpg'
+  },
+  {
+    name: 'WTAX Café',
+    url: 'assets/shop-logos/wtax-cafe.jpg'
+  },
+  {
+    name: 'Family Bakehouse',
+    url: 'assets/shop-logos/family-bakehouse.jpg'
+  },
+  {
+    name: 'Urban Gold',
+    url: 'assets/shop-logos/urban-gold.jpg'
+  },
+  {
+    name: 'Gelatissimo',
+    url: 'assets/shop-logos/gelatissimo.jpg'
+  }
+];
 
 const audienceContent = {
   drinkers: {
@@ -38,7 +84,7 @@ const audienceContent = {
     notePlaceholder: 'Tell us about your workplace, number of coffee shops, employee access, or demo goals.'
   },
   shops: {
-    title: 'A faster lane for your coffee shop.',
+    title: 'A fast lane for your coffee shop.',
     lede: 'Take paid mobile orders, manage prep, control availability, track performance, and give your regulars built-in rewards.',
     ctaLabel: 'Book a demo',
     ctaNavLabel: 'Book a demo',
@@ -68,7 +114,7 @@ const audienceContent = {
 
 const navToggle = document.querySelector('.nav-toggle')
 const navLinks = document.querySelector('.nav-links')
-const audienceTabs = document.querySelectorAll('[data-audience]')
+const audienceTabs = document.querySelectorAll('.audience-tab[data-audience]')
 const heroEyebrow = document.querySelector('#audience-eyebrow')
 const heroTitle = document.querySelector('#hero-title')
 const heroLede = document.querySelector('#hero-lede')
@@ -92,6 +138,7 @@ const userType = document.querySelector('#user-type')
 const signupRadios = document.querySelectorAll('input[name="signup_type"]')
 const submitText = waitlistForm?.querySelector('.submit-text')
 const flowSections = document.querySelectorAll('[data-flow]')
+const flowContainer = document.querySelector('#flow')
 const getInTouchSection = document.querySelector('#get-in-touch')
 const primaryCtas = document.querySelectorAll('[data-primary-cta]')
 const bookingPicker = document.querySelector('#booking-picker')
@@ -107,6 +154,10 @@ const shopLocationInput = document.querySelector('#shop-location-input')
 const shopSetupLabel = document.querySelector('#shop-setup-label')
 const shopSetupSelect = document.querySelector('#shop-setup-select')
 const demoNote = document.querySelector('#demo-note')
+const shopLogoSection = document.querySelector('[data-shop-logo-section]')
+const shopLogoCarousel = document.querySelector('[data-shop-logo-carousel]')
+const shopLogoTrack = document.querySelector('[data-shop-logo-track]')
+const shopLogoStatus = document.querySelector('[data-shop-logo-status]')
 
 const meetingTimeZone = 'Africa/Johannesburg';
 const meetingDisplayHours = [10, 11, 12, 13, 14, 15, 16]
@@ -121,7 +172,7 @@ const meetingLaterAvailability = [
 let meetingDates = []
 let selectedMeetingDate = '';
 
-let currentAudience = 'shops';
+let currentAudience = document.body.dataset.audience || 'shops';
 
 function getSouthAfricaCalendarDate (now = new Date()) {
   const parts = new Intl.DateTimeFormat('en-ZA', {
@@ -416,6 +467,85 @@ function setAudience (audience) {
   }
 }
 
+function createShopLogoGroup (logos, isClone = false) {
+  const group = document.createElement('ul')
+  group.className = 'shop-logo-group'
+
+  if (isClone) {
+    group.setAttribute('aria-hidden', 'true')
+  } else {
+    group.setAttribute('aria-label', 'Coffee shops available on OrderUp!')
+  }
+
+  logos.forEach((logo) => {
+    const item = document.createElement('li')
+    item.className = 'shop-logo-item'
+
+    const card = document.createElement('div')
+    card.className = 'shop-logo-card'
+
+    if (!isClone) {
+      card.tabIndex = 0
+      card.setAttribute('aria-label', logo.name)
+    }
+
+    const image = document.createElement('img')
+    image.src = logo.url
+    image.alt = ''
+    image.loading = isClone ? 'lazy' : 'eager'
+    image.fetchPriority = isClone ? 'low' : 'high'
+    image.decoding = 'async'
+    image.addEventListener('error', () => item.remove(), { once: true })
+
+    card.appendChild(image)
+    item.appendChild(card)
+    group.appendChild(item)
+  })
+
+  return group
+}
+
+function renderShopLogoCarousel (logos) {
+  if (!shopLogoSection || !shopLogoCarousel || !shopLogoTrack || !logos.length) {
+    return
+  }
+
+  const primaryGroup = createShopLogoGroup(logos)
+  const repeatedGroup = createShopLogoGroup(logos, true)
+  const duration = Math.max(42, logos.length * 3.2)
+  const startingLogoIndex = logos.findIndex((logo) => logo.name === 'Family Bakehouse')
+  shopLogoTrack.classList.add('is-starting')
+  shopLogoTrack.replaceChildren(primaryGroup, repeatedGroup)
+  shopLogoCarousel.style.setProperty('--shop-logo-duration', `${duration}s`)
+  shopLogoTrack.style.setProperty(
+    '--shop-logo-delay',
+    `${startingLogoIndex > 0 ? -(duration * startingLogoIndex / logos.length) : 0}s`
+  )
+  shopLogoSection.hidden = false
+  shopLogoSection.setAttribute('aria-busy', 'false')
+
+  const beginCarousel = () => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => shopLogoTrack.classList.remove('is-starting'))
+    })
+  }
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return
+      observer.disconnect()
+      beginCarousel()
+    }, { rootMargin: '0px 0px 600px 0px', threshold: 0 })
+    observer.observe(shopLogoCarousel)
+  } else {
+    beginCarousel()
+  }
+
+  if (shopLogoStatus) {
+    shopLogoStatus.textContent = `${logos.length} coffee shop logos loaded.`
+  }
+}
+
 navToggle?.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('open')
   navToggle.setAttribute('aria-expanded', String(isOpen))
@@ -432,11 +562,12 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
 
 audienceTabs.forEach((tab) => {
   tab.addEventListener('click', () => {
-    setAudience(tab.dataset.audience);
-    [0, 80].forEach((delay) => {
-      window.setTimeout(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-      }, delay)
+    setAudience(tab.dataset.audience)
+    window.requestAnimationFrame(() => {
+      flowContainer?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start'
+      })
     })
   })
 })
@@ -637,3 +768,4 @@ accountDeletionForm?.addEventListener('submit', async (event) => {
 
 renderMeetingPicker()
 setAudience(currentAudience)
+renderShopLogoCarousel(featuredShopLogos)
