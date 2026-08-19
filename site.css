@@ -610,9 +610,7 @@ h1 {
   place-items: center;
   overflow: hidden;
   padding: 88px 20px clamp(28px, 4vw, 40px);
-  background:
-    radial-gradient(circle at 50% 32%, rgba(0, 136, 255, 0.17), transparent 27%),
-    linear-gradient(180deg, rgba(238, 247, 255, 0.92), #fff 88%);
+  background: #f3f9ff;
 }
 
 .landing-lockup {
@@ -899,8 +897,6 @@ h1 {
 
 .shop-logo-carousel {
   --shop-logo-gap: clamp(22px, 3vw, 38px);
-  --shop-logo-duration: 120s;
-  --shop-logo-start-inset: clamp(24px, 7vw, 64px);
   width: 100%;
 }
 
@@ -914,18 +910,9 @@ h1 {
 .shop-logo-track {
   display: flex;
   width: max-content;
+  transform: translate3d(0, 0, 0);
   will-change: transform;
-  animation: shop-logo-scroll var(--shop-logo-duration) linear infinite;
-  animation-delay: var(--shop-logo-delay, 0s);
-}
-
-.shop-logo-track.is-starting {
-  animation-play-state: paused;
-}
-
-.shop-logo-carousel:hover .shop-logo-track,
-.shop-logo-carousel:focus-within .shop-logo-track {
-  animation-play-state: paused;
+  backface-visibility: hidden;
 }
 
 .shop-logo-group {
@@ -2503,16 +2490,6 @@ h1 {
 @keyframes spin {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes shop-logo-scroll {
-  from {
-    transform: translateX(var(--shop-logo-start-inset));
-  }
-
-  to {
-    transform: translateX(calc(-50% + var(--shop-logo-start-inset)));
   }
 }
 

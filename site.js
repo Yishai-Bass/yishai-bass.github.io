@@ -43,6 +43,10 @@ const featuredShopLogos = [
   {
     name: 'Gelatissimo',
     url: 'assets/shop-logos/gelatissimo.jpg'
+  },
+  {
+    name: 'Maki Maki | Genesis',
+    url: 'assets/shop-logos/maki-maki.jpg'
   }
 ];
 
@@ -467,6 +471,91 @@ function setAudience (audience) {
   }
 }
 
+function getShopLogoStartInset () {
+  return Math.min(64, Math.max(24, window.innerWidth * 0.07))
+}
+
+function createShopLogoMarquee (track, carousel, logoCount, startingLogoIndex, duration) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const groups = Array.from(track.children)
+
+  if (reducedMotion.matches || groups.length < 2) {
+    return { start: () => {} }
+  }
+
+  let groupWidth = groups[0].getBoundingClientRect().width
+  let startInset = getShopLogoStartInset()
+  let offset = startInset - (groupWidth * Math.max(0, startingLogoIndex) / logoCount)
+  let lastTimestamp = null
+  let isStarted = false
+  let isPaused = false
+
+  const renderPosition = () => {
+    track.style.transform = `translate3d(${offset}px, 0, 0)`
+  }
+
+  const updatePausedState = () => {
+    isPaused = carousel.matches(':hover') || carousel.contains(document.activeElement)
+  }
+
+  const advance = (timestamp) => {
+    if (lastTimestamp === null) {
+      lastTimestamp = timestamp
+    }
+
+    const elapsedSeconds = Math.min((timestamp - lastTimestamp) / 1000, 0.1)
+    lastTimestamp = timestamp
+
+    if (!isPaused && !document.hidden && groupWidth > 0) {
+      offset -= (groupWidth / duration) * elapsedSeconds
+
+      while (offset <= startInset - groupWidth) {
+        offset += groupWidth
+        const completedGroup = track.firstElementChild
+        if (completedGroup) track.appendChild(completedGroup)
+      }
+
+      renderPosition()
+    }
+
+    window.requestAnimationFrame(advance)
+  }
+
+  carousel.addEventListener('mouseenter', updatePausedState)
+  carousel.addEventListener('mouseleave', updatePausedState)
+  carousel.addEventListener('focusin', updatePausedState)
+  carousel.addEventListener('focusout', () => window.requestAnimationFrame(updatePausedState))
+  document.addEventListener('visibilitychange', () => {
+    lastTimestamp = null
+  })
+
+  if ('ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(() => {
+      const previousWidth = groupWidth
+      const previousInset = startInset
+      const progress = previousWidth > 0 ? (previousInset - offset) / previousWidth : 0
+      const firstGroup = track.firstElementChild
+
+      startInset = getShopLogoStartInset()
+      groupWidth = firstGroup?.getBoundingClientRect().width || previousWidth
+      offset = startInset - (progress * groupWidth)
+      renderPosition()
+    })
+    resizeObserver.observe(carousel)
+  }
+
+  renderPosition()
+
+  return {
+    start: () => {
+      if (isStarted) return
+      isStarted = true
+      updatePausedState()
+      window.requestAnimationFrame(advance)
+    }
+  }
+}
+
 function createShopLogoGroup (logos, isClone = false) {
   const group = document.createElement('ul')
   group.className = 'shop-logo-group'
@@ -514,20 +603,19 @@ function renderShopLogoCarousel (logos) {
   const repeatedGroup = createShopLogoGroup(logos, true)
   const duration = Math.max(42, logos.length * 3.2)
   const startingLogoIndex = logos.findIndex((logo) => logo.name === 'Family Bakehouse')
-  shopLogoTrack.classList.add('is-starting')
   shopLogoTrack.replaceChildren(primaryGroup, repeatedGroup)
-  shopLogoCarousel.style.setProperty('--shop-logo-duration', `${duration}s`)
-  shopLogoTrack.style.setProperty(
-    '--shop-logo-delay',
-    `${startingLogoIndex > 0 ? -(duration * startingLogoIndex / logos.length) : 0}s`
-  )
   shopLogoSection.hidden = false
   shopLogoSection.setAttribute('aria-busy', 'false')
+  const marquee = createShopLogoMarquee(
+    shopLogoTrack,
+    shopLogoCarousel,
+    logos.length,
+    startingLogoIndex,
+    duration
+  )
 
   const beginCarousel = () => {
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => shopLogoTrack.classList.remove('is-starting'))
-    })
+    marquee.start()
   }
 
   if ('IntersectionObserver' in window) {
