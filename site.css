@@ -2915,11 +2915,21 @@ h1 {
   }
 }
 
-/* Keep the original navigation pill centered; the login has its own alignment. */
+/* Reserve equal space beside the centered pill for the merchant login. */
 .merchant-header-shell { position: relative; }
-.merchant-login { position: fixed; top: 26px; right: 16px; pointer-events: auto; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border-radius: 999px; background: #0088ff; color: white; text-decoration: none; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 14px #0088ff25; }
+.merchant-header-shell .nav-shell { width: calc(100% - 380px); max-width: 940px; }
+.merchant-login { position: absolute; top: 50%; right: 0; transform: translateY(-50%); pointer-events: auto; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border-radius: 999px; background: #0088ff; color: white; text-decoration: none; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 14px #0088ff25; }
 .merchant-login:hover { background: #006dcc; }
 .merchant-login:focus-visible { outline: 3px solid #0088ff; outline-offset: 4px; }
-/* A full-size pill and separate login need room on both sides of the center. */
-@media (max-width: 1650px) { .merchant-login { top: 94px; } }
-@media (max-width: 860px) { .merchant-login { top: 90px; right: 14px; padding: 12px; font-size: 13px; } }
+@media (max-width: 1000px) {
+  .merchant-header-shell .nav-shell { width: calc(100% - 170px); margin-left: 0; }
+  .merchant-header-shell .nav-toggle { display: inline-flex; flex-shrink: 0; }
+  .merchant-header-shell .nav-links { position: fixed; left: 14px; right: 14px; top: 92px; display: none; flex-direction: column; align-items: stretch; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; box-shadow: var(--shadow-tight); }
+  .merchant-header-shell .nav-links.open { display: flex; }
+  .merchant-header-shell .nav-links a { justify-content: flex-start; }
+  .merchant-login { padding: 12px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .merchant-header-shell .brand-mark span { display: none; }
+  .merchant-header-shell .nav-shell { width: calc(100% - 154px); gap: 8px; }
+}
