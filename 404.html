@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OrderUp! — Page not found</title>
+  <script>
+    const app = window.location.pathname.split('/')[1];
+    if (['merchant', 'manager', 'admin'].includes(app)) {
+      const original = window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace('/' + app + '/?__dashboard_route=' + encodeURIComponent(original));
+    }
+  </script>
+</head>
+<body>
+  <h1>Page not found</h1>
+  <p><a href="/">Return to OrderUp!</a></p>
+</body>
+</html>

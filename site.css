@@ -2914,3 +2914,13 @@ h1 {
     display: none;
   }
 }
+
+/* Merchant Login sits beside the navigation pill on every screen size. */
+.merchant-header-shell { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+.merchant-header-shell .nav-shell { flex: 1; min-width: 0; margin: 0; }
+.merchant-login { flex-shrink: 0; pointer-events: auto; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border-radius: 999px; background: #0088ff; color: white; text-decoration: none; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 14px #0088ff25; }
+.merchant-login:hover { background: #006dcc; }
+.merchant-login:focus-visible { outline: 3px solid #0088ff; outline-offset: 4px; }
+@media (max-width: 860px) { .merchant-header-shell { gap: 10px; } .merchant-login { padding: 12px; font-size: 13px; } }
+
+@media (max-width: 440px) { .landing-page .brand-mark span { display: none; } }
